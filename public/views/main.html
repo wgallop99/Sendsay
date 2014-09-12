@@ -2,7 +2,7 @@
 
 <div class="jumbotron">
     <h1> Sendsay </h2>
-    <form>
+    <form >
 
         <h3 class="text-muted">What is your name, young leaf?</h3>
         <input type="text" placeholder="Name">
@@ -10,8 +10,8 @@
         <h3 class="text-muted">Is this what you look like?</h3>
         <input type="text" placeholder="Enter image URL" ng-model="imgUrl">
         <p><img src="{{imgUrl}}" width="200" height="200"></p>
-        
-        <p><a class="btn btn-lg btn-success" ng-href="#/blog">Enter.</a></p></p>
+
+        <p><a class="btn btn-lg btn-success" ng-href="#/blog" data-ng-click="newPost(post)">Enter.</a></p></p>
 
     </form>
 </div>
