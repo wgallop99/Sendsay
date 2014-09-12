@@ -14,11 +14,11 @@ angular
         controller: 'userCtrl'
       })
       .when('/chat1', {
-        templateUrl: 'views/blog-list.html',
+        templateUrl: 'views/chat.html',
         controller: 'userCtrl'
       })
       .when('/chat2')
-        templateUrl: 'views/blog-list.html'
+        templateUrl: 'views/chat.html'
         controller: 'userCtrl'
       })
       .otherwise({

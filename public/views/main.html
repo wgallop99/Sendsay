@@ -5,13 +5,13 @@
     <form>
 
         <h3 class="text-muted">What is your name, young leaf?</h3>
-        <input type="text" placeholder="Name" ng-model="post.title">
+        <input type="text" placeholder="Name" ng-model="user.title">
 
         <h3 class="text-muted">Is this what you look like?</h3>
-        <input type="url" placeholder="Enter image URL" ng-model="post.image">
-        <p><img src="{{post.image}}" width="200" height="200"></p>
+        <input type="url" placeholder="Enter image URL" ng-model="user.image">
+        <p><img src="{{user.image}}" width="200" height="200"></p>
 
-        <p><a class="btn btn-lg btn-success" ng-href="#/blog" data-ng-click="addUser(user)">Enter.</a></p></p>
+        <p><a class="btn btn-lg btn-success" ng-href="#/chat" data-ng-click="newUser(user)">Enter.</a></p></p>
 
     </form>
 </div>
