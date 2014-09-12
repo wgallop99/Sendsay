@@ -5,7 +5,7 @@ angular.module('ngDay2App')
 			{},
 			{
 				query: { method: 'GET', isArray: true },
-				create: { method: 'POST'}
+				create: { method: 'POST'},
 			});
 	})
 	.factory('PostSvc', function($resource) {

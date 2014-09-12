@@ -12,6 +12,7 @@ angular
       .when('/', {
         templateUrl: 'views/main.html'
         controller: 'userCtrl'
+        // controller: 'PostsCtrl'
       })
       .when('/chat', {
         templateUrl: 'views/blog-list.html',

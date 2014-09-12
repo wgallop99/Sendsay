@@ -1,6 +1,5 @@
-'use strict';
-
 angular.module('ngDay2App')
+
   .controller('PostsCtrl', function ($scope, $location, PostsSvc) {
 
     $scope.createPost = function() {
