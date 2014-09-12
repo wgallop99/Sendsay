@@ -1,30 +1,32 @@
 angular.module('ngDay2App')
 
-  .controller('PostsCtrl', function ($scope, $location, PostsSvc) {
+  .controller('usersCtrl', function ($scope, $location, usersSvc) {
 
-    $scope.createPost = function() {
+    $scope.createUser = function() {
     	$location.path('/new');
     };
 
-    $scope.newPost = function(post) {
+    $scope.newUser = function(user) {
     	PostsSvc.create({
-        title: post.title,
-        image: post.image,
+        title: user.title,
+        image: user.image,
         chat: []
       })
     	$location.path('/blog');
     };
-    $scope.posts = PostsSvc.query();
+    $scope.users = usersSvc.query();
   })
-  .controller('PostCtrl', function($scope, $location, $routeParams, PostSvc) {
 
-  	$scope.post = PostSvc.show({ id: $routeParams.id });
+  ///single user
+  .controller('usersCtrl', function($scope, $location, $routeParams, userSvc) {
+
+  	$scope.user = userSvc.show({ id: $routeParams.id });
   	$scope.delete = function() {
-  		PostSvc.delete({ id: $routeParams.id });
+  		userSvc.delete({ id: $routeParams.id });
   		$location.path('/blog');
   	};
   	$scope.edit = function() {
-  		PostSvc.edit($scope.post);
+  		userSvc.edit($scope.user);
   		$location.path('/blog');
   	};
 

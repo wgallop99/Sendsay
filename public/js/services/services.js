@@ -1,6 +1,6 @@
 'use strict';
 angular.module('ngDay2App')
-	.factory('PostsSvc', function($resource) {
+	.factory('usersSvc', function($resource) {
 		return $resource('api/collections/demotiy',
 			{},
 			{
@@ -8,7 +8,7 @@ angular.module('ngDay2App')
 				create: { method: 'POST'},
 			});
 	})
-	.factory('PostSvc', function($resource) {
+	.factory('userSvc', function($resource) {
 		return $resource('api/collections/demotiy/:id',
 			{
 				id: '@_id'
