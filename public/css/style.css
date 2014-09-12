@@ -6,3 +6,27 @@ body {
 a {
   color: #00B7FF;
 }
+
+.userList {
+  width: 100px;
+  height: 500px;
+  border: 1px solid black;
+  display: inline-block;
+}
+.chatInput{
+  width: 100%;
+  display: inline-block;
+  vertical-align: bottom;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.chatContainer {
+  width: 607px;
+  height: 500px;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}

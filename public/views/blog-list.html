@@ -1,6 +1,8 @@
-<button data-ng-click="createPost()">Create New Post</button>
-<section data-ng-repeat="post in posts">
-	<h2>{{post.title}}</h2>
-	<p>{{post.content}}</p>
-	<a href="#/blog/{{post._id}}">view more</a>
-</section>
+<div class="container">
+	<aside class="userList">
+	</aside>
+	<div class="chatContainer">
+		<div class="chatBox"></div>
+		<input class="chatInput" type="text" placeholder="Type Here">
+	</div>
+</div>
