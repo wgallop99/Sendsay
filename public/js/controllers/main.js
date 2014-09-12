@@ -5,8 +5,13 @@ angular.module('ngDay2App')
     $scope.createPost = function() {
     	$location.path('/new');
     };
+
     $scope.newPost = function(post) {
-    	PostsSvc.create(post)
+    	PostsSvc.create({
+        title: post.title,
+        image: post.image,
+        chat: []
+      })
     	$location.path('/blog');
     };
     $scope.posts = PostsSvc.query();
