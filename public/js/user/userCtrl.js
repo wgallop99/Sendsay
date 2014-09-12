@@ -16,20 +16,20 @@ angular.module("user")
       title: user.title,
       image: user.image,
       }).then(function () {
-        $location.path("/user");
+        $location.path("/");
       });
 
     };
 
     $scope.deleteUser = function (user) {
       userSvc.deleteUser(user).then(function () {
-        $location.path("/user");
+        $location.path("/");
       });
     };
 
     $scope.editUser = function (user) {
       userSvc.editUser(user).then(function () {
-        $location.path("/user");
+        $location.path("/");
       });
     };
 
