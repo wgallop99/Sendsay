@@ -10,11 +10,10 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html'
-        controller: 'userCtrl'
-        // controller: 'PostsCtrl'
+        templateUrl: 'views/main.html',
+        controller: 'PostsCtrl'
       })
       .when('/chat', {
         templateUrl: 'views/blog-list.html',
-        controller: 'chatCtrl'
+        controller: 'PostsCtrl'
   });
