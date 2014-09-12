@@ -8,8 +8,8 @@
         <input type="text" placeholder="Name" ng-model="post.title">
 
         <h3 class="text-muted">Is this what you look like?</h3>
-        <input type="text" placeholder="Enter image URL" ng-model="imgUrl">
-        <p><img src="{{imgUrl}}" width="200" height="200"></p>
+        <input type="text" placeholder="Enter image URL" ng-model="post.imgUrl">
+        <p><img src="{{post.imgUrl}}" width="200" height="200"></p>
 
         <p><a class="btn btn-lg btn-success" ng-href="#/blog" data-ng-click="newPost(post)">Enter.</a></p></p>
 
