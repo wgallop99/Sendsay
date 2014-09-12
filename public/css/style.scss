@@ -1,25 +1,28 @@
 body {
   padding: 50px;
-  overflow: hidden;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  overflow:hidden;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
 a {
-  color: #00B7FF; }
+  color: #00B7FF;
+}
 
 .userList {
   width: 200px;
   height: 500px;
   border: 1px solid black;
   display: inline-block;
-  overflow: auto; }
-
-.chatInput {
+  overflow:auto;
+}
+.chatInput{
   width: 100%;
   display: inline-block;
   vertical-align: bottom;
   position: absolute;
   bottom: 0px;
-  left: 0px; }
+  left: 0px;
+}
 
 .chatContainer {
   width: 607px;
@@ -27,8 +30,11 @@ a {
   border: 1px solid black;
   display: inline-block;
   vertical-align: top;
-  position: relative; }
+  position: relative;
+}
 
 .container {
-  display: inline-block;
-  margin: 10px; }
+ display:inline-block;
+ margin:10px;
+
+}
