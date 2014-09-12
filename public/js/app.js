@@ -13,8 +13,8 @@ angular
         templateUrl: 'views/main.html',
         controller: 'usersCtrl'
       })
-      .when('/blog', {
-        templateUrl: 'views/blog-list.html',
+      .when('/chat', {
+        templateUrl: 'views/chat.html',
         controller: 'usersCtrl'
       })
       .otherwise({

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('ngDay2App')
-  .factory('ChatSvc', function($resource) {
+  .factory('chatSvc', function($resource) {
     return $resource('api/collections/chatroom',
       {},
       {
@@ -8,7 +8,7 @@ angular.module('ngDay2App')
         create: { method: 'POST'},
       });
   })
-  .factory('ChatSvc', function($resource) {
+  .factory('chatSvc', function($resource) {
     return $resource('api/collections/chatroom/:id',
       {
         id: '@_id'
