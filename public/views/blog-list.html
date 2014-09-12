@@ -1,15 +1,15 @@
 <div class="container">
-	<aside class="userList">
-		<section data-ng-repeat="post in posts">
-			<h2>{{post.title}}</h2>
-			<img ng-src="{{post.image}}" alt="">
-		</section>
-	</aside>
-
 	<div class="chatContainer">
 		<div class="chatBox"></div>
 		<input class="chatInput" type="text" placeholder="Type Here">
 	</div>
+	<aside class="userList">
+
+		<section data-ng-repeat="post in posts">
+			<p>{{post.title}}</p>
+			<img ng-src="{{post.image}}" width="50">
+		</section>
+	</aside>
 </div>
 
 
