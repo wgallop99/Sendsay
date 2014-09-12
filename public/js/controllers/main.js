@@ -15,7 +15,7 @@ angular.module('ngDay2App')
   .controller('PostCtrl', function($scope, $location, $routeParams, PostSvc) {
 
   	$scope.post = PostSvc.show({ id: $routeParams.id });
-  	$scope.delete = function() { 
+  	$scope.delete = function() {
   		PostSvc.delete({ id: $routeParams.id });
   		$location.path('/blog');
   	};
