@@ -1,13 +1,13 @@
 <div class="container">
-  <form class="chatContainer" ng-submit="addMsg(msg)">
+  <form class="chatContainer">
     <div class="chatBox" data-ng-repeat="msg in msgs">
-      <p>{{msg.content}}</p>
-      <div class="userBox" data-ng-repeat="user in users">
-        <p>{{user.title}}</p>
-      </div>
+      <p>
+        <span class="author">{{msg.author}}:</span> {{msg.content}}<span class="dateposted">{{msg.posteddate | date:'MM-dd-yyyy HH:mm:ss'}}</span></p>
     </div>
-        <input class="chatInput" type="text" placeholder="Type Here" ng-model="msg.content">
-        <!-- <button type="submit" data-ng-click="addUser(user)"></button> -->
+
+        <input id="chatInput" type="text" placeholder="Type Here" ng-model="msg.content">
+        <input class="authorInput" type="text" ng-model="msg.author">
+        <button type="submit" data-ng-click="addMsg(msg)" style="display:none;"></button>
   </form>
 
   <aside class="userList">
