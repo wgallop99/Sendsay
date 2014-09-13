@@ -73,7 +73,15 @@ angular.module("userModule")
   $rootScope.$on("message:added", function () {
     userSvc.getMsgs().then(function (msgs) {
       $scope.msgs = msgs.data;
+        setTimeout(function () {
+            $scope.$apply(function () {
+                $scope.msgs = msgs.data;
+            })
+        }, 1000);
     });
-});
-
   });
+
+
+
+
+}); ///end
