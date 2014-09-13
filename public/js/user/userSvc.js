@@ -54,6 +54,23 @@ angular.module("userModule")
             })
         };
 
+        ///////////////chatroom2
+
+        var getMsgs = function(){
+          return $http.get(chatroom2);
+        };
+
+        var singleMsg = function(id) {
+           return $http.get(chatroom2 + "/" + id);
+        };
+
+        var createMsg = function(msg) {
+          return $http.post(chatroom2, msg).then(function (response) {
+                $rootScope.$broadcast("message:added");
+                $log.info("message:added");
+            })
+        };
+
         return {
           getUsers: getUsers,
           singleUser: singleUser,
