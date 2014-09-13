@@ -1,9 +1,9 @@
 angular.module("userModule")
     .factory("userSvc", function ( $rootScope, $log, $http) {
 
-        var userList = '/api/collections/demotiy';
-        var chatroom1 = '/api/collections/Chatroom1';
-        var chatroom2 = '/api/collections/Chatroom2';
+        var users = '/api/collections/demotiy';
+        var chatroom1 = '/api/collections/chatroom1';
+        var chatroom2 = '/api/collections/chatroom2';
 
         var getUsers = function(){
           return $http.get(users);
