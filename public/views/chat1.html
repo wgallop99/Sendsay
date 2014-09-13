@@ -1,10 +1,14 @@
 <div class="container">
-  <div class="chatContainer">
-    <div class="chatBox"></div>
-    <input class="chatInput" type="text" placeholder="Type Here">
-  </div>
-  <aside class="userList">
+  <form class="chatContainer" ng-submit="addMsg(msg)">
+    <div class="chatBox" data-ng-repeat="msg in msgs">
+        <p>{{msg.author}}</p>
+        <p>{{msg.content}}</p>
+        </div>
+        <input class="chatInput" type="text" placeholder="Type Here" ng-model="msg.content">
+        <!-- <button type="submit" data-ng-click="addUser(user)"></button> -->
+    </form>
 
+  <aside class="userList">
     <section data-ng-repeat="user in users">
       <p>{{user.title}}</p>
       <img ng-src="{{user.image}}" width="50">

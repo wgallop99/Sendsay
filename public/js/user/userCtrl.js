@@ -16,7 +16,7 @@ angular.module("userModule")
       title: user.title,
       image: user.image,
       }).then(function () {
-        $location.path("/");
+        $location.path("/chat1");
       });
 
     };
@@ -33,6 +33,31 @@ angular.module("userModule")
       });
     };
 
+    ///////////////
+
+    userSvc.getMsgs().then(function (msgs) {
+      console.log(msgs)
+      $scope.msgs = msgs.data;
+    });
+
+    userSvc.singleMsg($routeParams.id).then(function (response) {
+      $scope.singleMsg = response.data;
+    });
+
+
+    $scope.addMsg = function (msg) {
+      userSvc.addMsg({
+      author: msg.author,
+      content: msg.content,
+      }).then(function () {
+        $location.path("/chat1");
+      });
+
+    };
+
+
+    //////////listeners
+
     $rootScope.$on("user:deleted", function () {
       userSvc.getUsers().then(function (users) {
         $scope.users = users.data;
@@ -44,5 +69,11 @@ angular.module("userModule")
         $scope.users = users.data;
       });
   });
+
+  $rootScope.$on("message:added", function () {
+    userSvc.getMsgs().then(function (msgs) {
+      $scope.msgs = msgs.data;
+    });
+});
 
   });
