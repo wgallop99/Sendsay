@@ -1,11 +1,12 @@
 'use strict';
 
-angular
-  .module('ngDay2App', [
+angular.module('ngDay2App',
+  [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    // 'userModule',
+    'ngRoute',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -17,11 +18,11 @@ angular
         templateUrl: 'views/chat.html',
         controller: 'userCtrl'
       })
-      .when('/chat2')
-        templateUrl: 'views/chat.html'
+      .when('/chat2', {
+        templateUrl: 'views/chat.html',
         controller: 'userCtrl'
       })
       .otherwise({
         redirectTo: '/'
-      });
+    });
   });

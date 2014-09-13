@@ -1,4 +1,4 @@
-angular.module("user")
+angular.module("userModule")
     .factory("userSvc", function ( $rootScope, $log, $http) {
 
         var users = '/api/collections/demotiy';

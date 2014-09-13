@@ -1,4 +1,4 @@
-angular.module("user")
+angular.module("userModule")
   .controller("userCtrl", function ($rootScope, $scope, $location, $routeParams, userSvc) {
 
 // main CRUD functions
@@ -37,12 +37,12 @@ angular.module("user")
       userSvc.getUsers().then(function (users) {
         $scope.users = users.data;
       });
-    })
+  });
 
     $rootScope.$on("user:updated", function () {
       userSvc.getUsers().then(function (users) {
-        $scope.users = prods.data;
+        $scope.users = users.data;
       });
-    })
+  });
 
   });
