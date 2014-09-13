@@ -10,7 +10,7 @@ angular.module("userModule")
         };
 
         var singleUser = function(id) {
-           return $http.get(user + "/" + id);
+           return $http.get(users + "/" + id);
         };
 
         var createUser = function(user) {
