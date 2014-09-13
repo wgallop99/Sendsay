@@ -13,12 +13,14 @@ angular.module("userModule")
            return $http.get(users + "/" + id);
         };
 
+
         var createUser = function(user) {
           return $http.post(users, user).then(function (response) {
                 $rootScope.$broadcast("user:added");
                 $log.info("user:added");
             })
         };
+
 
         var deleteUser = function(user) {
           return $http.delete(users + "/" + user._id, user).then(function (response) {
@@ -35,11 +37,32 @@ angular.module("userModule")
             })
         };
 
+        ///////////////chatroom1
+
+        var getMsgs = function(){
+          return $http.get(chatroom1);
+        };
+
+        var singleMsg = function(id) {
+           return $http.get(chatroom1 + "/" + id);
+        };
+
+        var createMsg = function(msg) {
+          return $http.post(chatroom1, msg).then(function (response) {
+                $rootScope.$broadcast("message:added");
+                $log.info("message:added");
+            })
+        };
+
         return {
           getUsers: getUsers,
           singleUser: singleUser,
           addUser: createUser,
           deleteUser: deleteUser,
-          editUser: editUser
+          editUser: editUser,
+          ////
+          getMsgs: getMsgs,
+          singleMsg: singleMsg,
+          addMsg: createMsg,
         };
     });

@@ -11,15 +11,15 @@ a {
   height: 500px;
   border: 1px solid black;
   display: inline-block;
+  position: absolute;
   overflow: auto; }
 
 .chatInput {
-  width: 100%;
+  width: 607px;
   display: inline-block;
-  vertical-align: bottom;
-  position: absolute;
-  bottom: 0px;
-  left: 0px; }
+  position: fixed;
+  bottom: 25px;
+  left: 100px; }
 
 .chatContainer {
   width: 607px;
@@ -27,7 +27,8 @@ a {
   border: 1px solid black;
   display: inline-block;
   vertical-align: top;
-  position: relative; }
+  position: relative;
+  overflow: auto; }
 
 .container {
   display: inline-block;
