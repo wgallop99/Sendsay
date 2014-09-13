@@ -32,7 +32,7 @@ angular.module("userModule")
           return $http.put(users + "/" + user._id, user).then(function (response) {
                 $rootScope.$broadcast("user:updated");
                 $log.info("user:updated");
-            })
+              })
         };
 
         return {
