@@ -2,8 +2,8 @@ angular.module("userModule")
     .factory("userSvc", function ( $rootScope, $log, $http) {
 
         var users = '/api/collections/demotiy';
-        var chatroom1 = '/api/collections/chatroom1';
-        var chatroom2 = '/api/collections/chatroom2';
+        var chatroom1 = '/api/collections/chatroom';
+        // var chatroom2 = '/api/collections/chatroom2';
 
         var getUsers = function(){
           return $http.get(users);
@@ -54,22 +54,6 @@ angular.module("userModule")
             })
         };
 
-        ///////////////chatroom2
-
-        var getMsgs2 = function(){
-          return $http.get(chatroom2);
-        };
-
-        var singleMsg2 = function(id) {
-           return $http.get(chatroom2 + "/" + id);
-        };
-
-        var createMsg2 = function(msg) {
-          return $http.post(chatroom2, msg).then(function (response) {
-                $rootScope.$broadcast("message:added");
-                $log.info("message:added");
-            })
-        };
 
         return {
           getUsers: getUsers,
@@ -81,9 +65,5 @@ angular.module("userModule")
           getMsgs: getMsgs,
           singleMsg: singleMsg,
           addMsg: createMsg,
-          ////
-          getMsgs2: getMsgs2,
-          singleMsg2: singleMsg2,
-          addMsg2: createMsg2,
         };
     });

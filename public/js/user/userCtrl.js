@@ -15,7 +15,7 @@ angular.module("userModule")
       var kill = false;
       for (var i = 0; i< $scope.users.length; i++) {
         if($scope.users[i].title === user.title) {
-          console.log("match")
+          $rootScope.$broadcast("user:match");
           console.log("you're already in our system");
           return kill = true;
         }
@@ -66,6 +66,7 @@ angular.module("userModule")
 
 
     //////////listeners
+
 
     $rootScope.$on("user:deleted", function () {
       userSvc.getUsers().then(function (users) {
