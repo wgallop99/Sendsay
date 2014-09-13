@@ -16,7 +16,7 @@ angular.module("userModule")
       title: user.title,
       image: user.image,
       }).then(function () {
-        $location.path("/");
+        $location.path("/chat1");
       });
 
     };

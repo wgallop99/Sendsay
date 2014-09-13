@@ -1,7 +1,7 @@
 angular.module("userModule")
     .factory("userSvc", function ( $rootScope, $log, $http) {
 
-        var users = '/api/collections/demotiy';
+        var userList = '/api/collections/demotiy';
         var chatroom1 = '/api/collections/Chatroom1';
         var chatroom2 = '/api/collections/Chatroom2';
 
@@ -10,7 +10,7 @@ angular.module("userModule")
         };
 
         var singleUser = function(id) {
-           return $http.get(user + "/" + id);
+           return $http.get(users + "/" + id);
         };
 
         var createUser = function(user) {
