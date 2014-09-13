@@ -47,8 +47,10 @@ angular.module("userModule")
 
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
-      author: msg.author,
+      posteddate: Date.now(),
+      title: msg.title,
       content: msg.content,
+
       }).then(function () {
         $location.path("/chat1");
       });

@@ -56,15 +56,15 @@ angular.module("userModule")
 
         ///////////////chatroom2
 
-        var getMsgs = function(){
+        var getMsgs2 = function(){
           return $http.get(chatroom2);
         };
 
-        var singleMsg = function(id) {
+        var singleMsg2 = function(id) {
            return $http.get(chatroom2 + "/" + id);
         };
 
-        var createMsg = function(msg) {
+        var createMsg2 = function(msg) {
           return $http.post(chatroom2, msg).then(function (response) {
                 $rootScope.$broadcast("message:added");
                 $log.info("message:added");
@@ -81,5 +81,9 @@ angular.module("userModule")
           getMsgs: getMsgs,
           singleMsg: singleMsg,
           addMsg: createMsg,
+          ////
+          getMsgs2: getMsgs2,
+          singleMsg2: singleMsg2,
+          addMsg2: createMsg2,
         };
     });
