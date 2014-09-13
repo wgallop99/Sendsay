@@ -20,6 +20,10 @@ angular.module('userModule',
         templateUrl: 'views/chat2.html',
         controller: 'userCtrl'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'userCtrl'
+      })
       .otherwise({
         redirectTo: '/'
     });

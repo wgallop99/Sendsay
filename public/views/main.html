@@ -1,5 +1,7 @@
 <div class="header"> </div>
 
+<a href="#admin">Go To Admin</a>
+
 <div class="jumbotron">
     <h1> Sendsay </h2>
     <form>
@@ -8,7 +10,7 @@
         <input type="text" placeholder="Name" ng-model="user.title" required>
 
         <h3 class="text-muted">Is this what you look like?</h3>
-        <input type="url" placeholder="Enter image URL" ng-model="user.image">
+        <input type="url" placeholder="Enter image URL" ng-model="user.image" required>
         <p><img src="{{user.image}}" width="200" height="200"></p>
 
         <p><a class="btn btn-lg btn-success" ng-href="#/chat1" data-ng-click="addUser(user)">Enter Ninja Chat</a></p></p>

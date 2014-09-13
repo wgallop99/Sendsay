@@ -12,19 +12,25 @@ angular.module("userModule")
     });
 
     $scope.addUser = function (user) {
-      userSvc.addUser({
-      title: user.title,
-      image: user.image,
+      var kill = false;
+      for (var i = 0; i< $scope.users.length; i++) {
+        if($scope.users[i].title === user.title) {
+          console.log("match")
+          console.log("you're already in our system");
+          return kill = true;
+        }
+      } if (kill === false) {
+        userSvc.addUser({
+        title: user.title,
+        image: user.image,
       }).then(function () {
-        $location.path("/chat1");
-      });
-
+          $location.path("/chat1");
+      })
+    }
     };
 
     $scope.deleteUser = function (user) {
-      userSvc.deleteUser(user).then(function () {
-        $location.path("/");
-      });
+      userSvc.deleteUser(user);
     };
 
     $scope.editUser = function (user) {
@@ -80,8 +86,4 @@ angular.module("userModule")
         }, 1000);
     });
   });
-
-
-
-
-}); ///end
+});
