@@ -16,12 +16,18 @@ a {
   position:absolute;
   overflow:auto;
 }
-.chatInput{
+#chatInput{
   width: 607px;
 display: inline-block;
 position: fixed;
 bottom: 25px;
-left: 100px;
+left: 150px;
+}
+.authorInput{
+  width: 100px;
+position: fixed;
+bottom: 25px;
+left: 0px;
 }
 
 .dateposted {
@@ -32,15 +38,23 @@ left: 100px;
 .chatContainer {
   width: 607px;
   height: 500px;
+  padding-bottom:15px;
   border: 1px solid black;
   display: inline-block;
   vertical-align: top;
   position: relative;
   overflow:auto;
+  .chatbox {
+      margin-bottom:25px;
+  }
 }
 
 .container {
  display:inline-block;
  margin:10px;
 
+}
+
+.author {
+    font-weight:bold;
 }

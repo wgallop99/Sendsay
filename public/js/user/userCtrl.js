@@ -37,7 +37,7 @@ angular.module("userModule")
 
     userSvc.getMsgs().then(function (msgs) {
       console.log(msgs)
-      $scope.msgs = msgs.data;
+      $scope.msgs = msgs.data.reverse();
     });
 
     userSvc.singleMsg($routeParams.id).then(function (response) {
@@ -48,11 +48,12 @@ angular.module("userModule")
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
       posteddate: Date.now(),
-      title: msg.title,
+      author: msg.author,
       content: msg.content,
 
       }).then(function () {
         $location.path("/chat1");
+        document.getElementById("chatInput").value = "";
       });
 
     };
@@ -74,12 +75,8 @@ angular.module("userModule")
 
   $rootScope.$on("message:added", function () {
     userSvc.getMsgs().then(function (msgs) {
-      $scope.msgs = msgs.data;
-        setTimeout(function () {
-            $scope.$apply(function () {
-                $scope.msgs = msgs.data;
-            })
-        }, 1000);
+      $scope.msgs = msgs.data.reverse();
+
     });
   });
 
