@@ -60,7 +60,7 @@ angular.module("userModule")
       $scope.msgs = msgs.data.reverse();
     });
 
-    $scope.$interval(function (msgs) {
+    $interval(function (msgs) {
         userSvc.getMsgs();
     },1000);
 
