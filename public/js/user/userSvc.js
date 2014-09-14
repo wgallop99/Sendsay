@@ -1,17 +1,22 @@
+
 angular.module("userModule")
-    .factory("userSvc", function ( $rootScope, $log, $http, $cookies) {
+    .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
 
         var users = '/api/collections/demotiy';
-        var chatroom1 = '/api/collections/chatroom1';
-        var chatroom2 = '/api/collections/chatroom2';
+        var chatroom1 = '/api/collections/chatroom';
 
         var getUsers = function(){
           return $http.get(users);
         };
 
+        var addUser = function(name) {
+            $cookies.user = name;
+        };
+
         var singleUser = function(id) {
            return $http.get(users + "/" + id);
         };
+
 
         var createUser = function(user) {
           return $http.post(users, user).then(function (response) {
@@ -19,6 +24,7 @@ angular.module("userModule")
                 $log.info("user:added");
             })
         };
+
 
         var deleteUser = function(user) {
           return $http.delete(users + "/" + user._id, user).then(function (response) {
@@ -28,12 +34,12 @@ angular.module("userModule")
             })
         };
 
-        var editUser = function(user) {
-          return $http.put(users + "/" + user._id, user).then(function (response) {
-                $rootScope.$broadcast("user:updated");
-                $log.info("user:updated");
-              })
-        };
+        // var editUser = function(user) {
+        //  return $http.put(users + "/" + user._id, user).then(function (response) {
+        //        $rootScope.$broadcast("user:updated");
+        //        $log.info("user:updated");
+        //      })
+        // };
 
         ///////////////chatroom1
 
@@ -41,9 +47,9 @@ angular.module("userModule")
           return $http.get(chatroom1);
         };
 
-        var singleMsg = function(id) {
-           return $http.get(chatroom1 + "/" + id);
-        };
+        // var singleMsg = function(id) {
+        //    return $http.get(chatroom1 + "/" + id);
+        // };
 
         var createMsg = function(msg) {
           return $http.post(chatroom1, msg).then(function (response) {
@@ -52,36 +58,17 @@ angular.module("userModule")
             })
         };
 
-        ///////////////chatroom2
-
-        var getMsgs2 = function(){
-          return $http.get(chatroom2);
-        };
-
-        var singleMsg2 = function(id) {
-           return $http.get(chatroom2 + "/" + id);
-        };
-
-        var createMsg2 = function(msg) {
-          return $http.post(chatroom2, msg).then(function (response) {
-                $rootScope.$broadcast("message:added");
-                $log.info("message:added");
-            })
-        };
 
         return {
+          addUser:addUser,
           getUsers: getUsers,
-          singleUser: singleUser,
-          addUser: createUser,
+        //  singleUser: singleUser,
+        //  addUser: createUser,
           deleteUser: deleteUser,
-          editUser: editUser,
+        //  editUser: editUser,
           ////
           getMsgs: getMsgs,
-          singleMsg: singleMsg,
+        //  singleMsg: singleMsg,
           addMsg: createMsg,
-          ////
-          getMsgs2: getMsgs2,
-          singleMsg2: singleMsg2,
-          addMsg2: createMsg2,
         };
     });
