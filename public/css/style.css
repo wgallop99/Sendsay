@@ -1,6 +1,18 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/brickwall.png"); }
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+  font-size: 6em;
+  color: rgba(155, 0, 0, 0.7); }
+
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.001);
+  text-align: center;
+  font-family: "helvetica"; }
 
 a {
   color: #00B7FF; }

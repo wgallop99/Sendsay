@@ -54,7 +54,7 @@ angular.module("userModule")
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
       posteddate: Date.now(),
-      author: msg.author,
+      author: $scope.user.title,
       content: msg.content,
 
       }).then(function () {

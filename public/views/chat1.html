@@ -2,7 +2,7 @@
   <form class="chatContainer">
     <div class="chatBox" data-ng-repeat="msg in msgs">
       <p>
-        <span class="author">{{msg.author}}:</span> {{msg.content}}<span class="dateposted">{{msg.posteddate | date:'MM-dd-yyyy HH:mm:ss'}}</span></p>
+        <span class="author">{{msg.author}}:</span> {{msg.content}}<span class="dateposted">{{msg.posteddate | date:'short'}}</span></p>
     </div>
 
         <input id="chatInput" type="text" placeholder="Type Here" ng-model="msg.content">
