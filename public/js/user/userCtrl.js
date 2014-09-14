@@ -1,7 +1,9 @@
 angular.module("userModule")
-  .controller("userCtrl", function ($rootScope, $scope, $location, $routeParams, userSvc) {
+  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, userSvc) {
 
 // main CRUD functions
+
+
     userSvc.getUsers().then(function (users) {
       console.log(users)
       $scope.users = users.data;
@@ -11,23 +13,37 @@ angular.module("userModule")
       $scope.singleUser = response.data;
     });
 
-    $scope.addUser = function (user) {
-      var kill = false;
-      for (var i = 0; i< $scope.users.length; i++) {
-        if($scope.users[i].title === user.title) {
-          console.log("match")
-          console.log("you're already in our system");
-          return kill = true;
-        }
-      } if (kill === false) {
-        userSvc.addUser({
-        title: user.title,
-        image: user.image,
-      }).then(function () {
-          $location.path("/chat1");
-      })
-    }
+    $scope.addUser = function(name) {
+
+      userSvc.addUser(name);
+
+      $location.path("/chat1");
+
     };
+
+    $scope.goToChat = function () {
+      $location.path("/chat1");
+    };
+
+    $scope.username = $cookies.username;
+
+    // $scope.addUser = function (user) {
+    //   var kill = false;
+    //   for (var i = 0; i< $scope.users.length; i++) {
+    //     if($scope.users[i].title === user.title) {
+    //       console.log("match")
+    //       console.log("you're already in our system");
+    //       return kill = true;
+    //     }
+    //   } if (kill === false) {
+    //     userSvc.addUser({
+    //     title: user.title,
+    //     image: user.image,
+    //   }).then(function () {
+    //       $location.path("/chat1");
+    //   })
+    // }
+    // };
 
     $scope.deleteUser = function (user) {
       userSvc.deleteUser(user);
@@ -64,6 +80,10 @@ angular.module("userModule")
 
     };
 
+    $scope.$watch('chatroom1', function () {
+
+    });
+
 
     //////////listeners
 
@@ -82,7 +102,7 @@ angular.module("userModule")
   $rootScope.$on("message:added", function () {
     userSvc.getMsgs().then(function (msgs) {
       $scope.msgs = msgs.data.reverse();
-
+      $route.reload("#/chat1");
     });
   });
 });

@@ -1,5 +1,5 @@
 angular.module("userModule")
-    .factory("userSvc", function ( $rootScope, $log, $http) {
+    .factory("userSvc", function ( $rootScope, $log, $http, $cookies) {
 
         var users = '/api/collections/demotiy';
         var chatroom1 = '/api/collections/chatroom1';
@@ -13,14 +13,12 @@ angular.module("userModule")
            return $http.get(users + "/" + id);
         };
 
-
         var createUser = function(user) {
           return $http.post(users, user).then(function (response) {
                 $rootScope.$broadcast("user:added");
                 $log.info("user:added");
             })
         };
-
 
         var deleteUser = function(user) {
           return $http.delete(users + "/" + user._id, user).then(function (response) {
