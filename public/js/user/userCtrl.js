@@ -55,14 +55,10 @@ angular.module("userModule")
 
     ///////////////
 
-    // userSvc.getMsgs().then(function (msgs) {
-    //   console.log(msgs)
-    //   $scope.msgs = msgs.data.reverse();
-    // });
-
-    $interval(function (msgs) {
-        userSvc.getMsgs();
-    },1000);
+    userSvc.getMsgs().then(function (msgs) {
+      console.log(msgs)
+      $scope.msgs = msgs.data.reverse();
+    });
 
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
@@ -99,6 +95,9 @@ angular.module("userModule")
   });
 
 
-
+$interval(function (msgs) {
+    userSvc.getMsgs();
+    console.log("fetching");
+},1000);
 
 });
