@@ -1,97 +1,55 @@
 angular.module("userModule")
-  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, $interval, userSvc) {
+    .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
 
-// main CRUD functions
-    userSvc.getUsers().then(function (users) {
-      $scope.users = users.data;
+        var users = '/api/collections/demotiy';
+        var chatroom1 = '/api/collections/chatroom';
+
+        var getUsers = function(){
+          return $http.get(users);
+        };
+
+        var createUser = function(user) {
+          return $http.post(users, user).then(function (response) {
+                $rootScope.$broadcast("user:added");
+                $log.info("user:added");
+            })
+        };
+
+        ///////cookie username
+        var addUsername = function(name) {
+            $cookies.username = name;
+        };
+
+        var deleteUser = function(user) {
+          return $http.delete(users + "/" + user._id, user).then(function (response) {
+                console.log(response);
+                $rootScope.$broadcast("user:deleted");
+                $log.info("user:deleted");
+            })
+        };
+
+
+        ///////////////chatroom1
+
+        var getMsgs = function(){
+          return $http.get(chatroom1);
+        };
+
+        var createMsg = function(msg) {
+          return $http.post(chatroom1, msg).then(function (response) {
+                $rootScope.$broadcast("message:added");
+                $log.info("message:added");
+            })
+        };
+
+
+        return {
+          addUsername:addUsername,
+          getUsers: getUsers,
+          addUser: createUser,
+          deleteUser: deleteUser,
+          ////
+          getMsgs: getMsgs,
+          addMsg: createMsg,
+        };
     });
-
-    // userSvc.singleUser($routeParams.id).then(function (response) {
-    //  $scope.singleUser = response.data;
-    // });
-
-    $scope.addUser = function(name) {
-
-      userSvc.addUser(name);
-
-      $location.path("/chat1");
-    };
-
-    $scope.user = $cookies.user;
-    userSvc.getMsgs().success(function(msgs) {
-      $scope.msgs = msgs;
-
-    });
-    // $scope.createUser = function (user) {
-    //  var kill = false;
-    //  for (var i = 0; i< $scope.users.length; i++) {
-    //    if($scope.users[i].title === user.title) {
-    //      $rootScope.$broadcast("user:match");
-    //      console.log("you're already in our system");
-    //      return kill = true;
-    //    }
-    //  } if (kill === false) {
-    //    userSvc.createUser({
-    //    user: $scope.user,
-    //    image: user.image,
-    //  }).then(function () {
-    //      $location.path("/chat1");
-    //  })
-    // }
-    // };
-
-    $scope.deleteUser = function (user) {
-      userSvc.deleteUser(user);
-    };
-
-    ///////////////
-
-    userSvc.getMsgs().then(function (msgs) {
-      console.log(msgs)
-      $scope.msgs = msgs.data.reverse();
-    });
-
-    $scope.addMsg = function (msg) {
-      userSvc.addMsg({
-      posteddate: Date.now(),
-      user: $scope.user,
-      content: msg.content,
-
-      }).then(function () {
-        document.getElementById("chatInput").value = "";
-      });
-
-    };
-
-
-    /////////////////////////////////////listeners
-
-
-    $rootScope.$on("user:deleted", function () {
-      userSvc.getUsers().then(function (users) {
-        $scope.users = users.data.reverse();
-      });
-  });
-
-    $rootScope.$on("user:updated", function () {
-      userSvc.getUsers().then(function (users) {
-        $scope.users = users.data;
-      });
-  });
-
-    $rootScope.$on("message:added", function () {
-      userSvc.getMsgs().then(function (msgs) {
-        $scope.msgs = msgs.data.reverse();
-    });
-  });
-
-
-
- $scope.getMsgs = $interval(function()
-    {
-      userSvc.getMsgs().success(function(msgs){
-      $scope.msgs = msgs.data.reverse();
-      });
-    }, 500);
-
-});
