@@ -1,4 +1,3 @@
-
 angular.module("userModule")
     .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
 
@@ -9,26 +8,17 @@ angular.module("userModule")
           return $http.get(users);
         };
 
-
-        var addUser = function(name) {
-            $cookies.user = name;
+        var createUser = function(user) {
+          return $http.post(users, user).then(function (response) {
+                $rootScope.$broadcast("user:added");
+                $log.info("user:added");
+            })
         };
 
-        var singleUser = function(id) {
-           return $http.get(users + "/" + id);
+        ///////cookie username
+        var addUsername = function(name) {
+            $cookies.username = name;
         };
-        // var singleUser = function(id) {
-        //    return $http.get(users + "/" + id);
-        // };
-
-
-        // var createUser = function(user) {
-        //   return $http.post(users, user).then(function (response) {
-        //         $rootScope.$broadcast("user:added");
-        //         $log.info("user:added");
-        //     })
-        // };
-
 
         var deleteUser = function(user) {
           return $http.delete(users + "/" + user._id, user).then(function (response) {
@@ -38,22 +28,12 @@ angular.module("userModule")
             })
         };
 
-        // var editUser = function(user) {
-        //  return $http.put(users + "/" + user._id, user).then(function (response) {
-        //        $rootScope.$broadcast("user:updated");
-        //        $log.info("user:updated");
-        //      })
-        // };
 
         ///////////////chatroom1
 
         var getMsgs = function(){
           return $http.get(chatroom1);
         };
-
-        // var singleMsg = function(id) {
-        //    return $http.get(chatroom1 + "/" + id);
-        // };
 
         var createMsg = function(msg) {
           return $http.post(chatroom1, msg).then(function (response) {
@@ -64,15 +44,12 @@ angular.module("userModule")
 
 
         return {
-          addUser:addUser,
+          addUsername:addUsername,
           getUsers: getUsers,
-        //   singleUser: singleUser,
-        //   addUser: createUser,
+          addUser: createUser,
           deleteUser: deleteUser,
-        //   editUser: editUser,
           ////
           getMsgs: getMsgs,
-        //   singleMsg: singleMsg,
           addMsg: createMsg,
         };
     });
