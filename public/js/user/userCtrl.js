@@ -1,5 +1,5 @@
 angular.module("userModule")
-  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, $interval, userSvc) {
+  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, userSvc) {
 
 // main CRUD functions
     userSvc.getUsers().then(function (users) {
@@ -55,11 +55,15 @@ angular.module("userModule")
 
     ///////////////
 
-    $interval(userSvc.getMsgs().then(function (msgs) {
+    userSvc.getMsgs().then(function (msgs) {
       console.log(msgs)
       $scope.msgs = msgs.data.reverse();
-  }), 1000
-);
+    });
+
+    $interval(function (msgs) {
+        userSvc.getMsgs();
+        $scope.msgs = msgs.data.reverse();
+    },500);
 
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
@@ -93,7 +97,10 @@ angular.module("userModule")
     $rootScope.$on("message:added", function () {
       userSvc.getMsgs().then(function (msgs) {
         $scope.msgs = msgs.data.reverse();
-        // $route.reload();
     });
   });
+
+
+
+
 });
