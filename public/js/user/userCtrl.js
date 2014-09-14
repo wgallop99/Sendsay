@@ -18,10 +18,7 @@ angular.module("userModule")
     };
 
     $scope.user = $cookies.user;
-
     userSvc.getMsgs().success(function(msgs) {
-
-
       $scope.msgs = msgs;
 
     });
@@ -46,12 +43,6 @@ angular.module("userModule")
     $scope.deleteUser = function (user) {
       userSvc.deleteUser(user);
     };
-    //
-    // $scope.editUser = function (user) {
-    //  userSvc.editUser(user).then(function () {
-    //    $location.path("/");
-    //  });
-    // };
 
     ///////////////
 
@@ -95,9 +86,12 @@ angular.module("userModule")
   });
 
 
-$interval(function () {
-    userSvc.getMsgs();
-    console.log("fetching");
-},1000);
+
+ $scope.getMsgs = $interval(function()
+    {
+      userSvc.getMsgs().success(function(msgs){
+      $scope.msgs = msgs;
+      });
+    }, 500);
 
 });
