@@ -1,6 +1,6 @@
 
 angular.module("userModule")
-    .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
+    .factory("userSvc", function ($rootScope, $log, $http, $cookies, $interval) {
 
         var users = '/api/collections/demotiy';
         var chatroom1 = '/api/collections/chatroom';
@@ -34,6 +34,11 @@ angular.module("userModule")
 
         var getMsgs = function(){
           return $http.get(chatroom1);
+          $interval(function () {
+              return $http.get(chatroom1)
+              console.log("fetching");
+          },1000);
+
         };
 
         var createMsg = function(msg) {

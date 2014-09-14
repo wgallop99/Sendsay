@@ -95,7 +95,7 @@ angular.module("userModule")
   });
 
 
-$interval(function (msgs) {
+$interval(function () {
     userSvc.getMsgs();
     console.log("fetching");
 },1000);
