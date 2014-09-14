@@ -1,3 +1,4 @@
+
 angular.module("userModule")
     .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
 
@@ -14,7 +15,6 @@ angular.module("userModule")
                 $log.info("user:added");
             })
         };
-
 
         ///////cookie username
         var addUsername = function(name) {

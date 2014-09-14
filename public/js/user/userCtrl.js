@@ -1,9 +1,8 @@
 angular.module("userModule")
-  .controller("userCtrl", function ($rootScope, $scope, $location, $routeParams, $cookies, userSvc) {
+  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, userSvc) {
 
 // main CRUD functions
     userSvc.getUsers().then(function (users) {
-      console.log(users)
       $scope.users = users.data;
     });
 
@@ -33,6 +32,7 @@ angular.module("userModule")
 
     $scope.username = $cookies.username;
     userSvc.getMsgs().success(function(msgs) {
+
     $scope.msgs = msgs;
 
     });
@@ -40,6 +40,7 @@ angular.module("userModule")
     $scope.deleteUser = function (user) {
       userSvc.deleteUser(user);
     };
+
     ///////////////
 
     userSvc.getMsgs().then(function (msgs) {
@@ -61,7 +62,7 @@ angular.module("userModule")
     };
 
 
-    //////////listeners
+    /////////////////////////////////////listeners
 
 
     $rootScope.$on("user:deleted", function () {
