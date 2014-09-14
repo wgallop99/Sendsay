@@ -2,9 +2,15 @@ angular.module("userModule")
   .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, userSvc) {
 
 // main CRUD functions
-    userSvc.getUsers().then(function (users) {
-      $scope.users = users.data;
-    });
+    // userSvc.getUsers().then(function (users, $interval) {
+    //   $scope.users = users.data;
+    // }, 1000);
+
+    $interval(userSvc.getMsgs().then(function (msgs) {
+      console.log(msgs)
+      $scope.msgs = msgs.data.reverse();
+      }), 1000
+    );
 
     // userSvc.singleUser($routeParams.id).then(function (response) {
     //  $scope.singleUser = response.data;
@@ -89,10 +95,10 @@ angular.module("userModule")
       });
   });
 
-      $rootScope.$on("message:added", function () {
-        userSvc.getMsgs().then(function (msgs) {
-          $scope.msgs = msgs.data.reverse();
-
+    $rootScope.$on("message:added", function () {
+      userSvc.getMsgs().then(function (msgs) {
+        $scope.msgs = msgs.data.reverse();
+        $route.reload();
     });
   });
 });
