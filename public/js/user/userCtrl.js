@@ -12,20 +12,19 @@ angular.module("userModule")
 
     $scope.addUser = function(name) {
 
-        userSvc.addUser(name);
+      userSvc.addUser(name);
 
-        $location.path("/chat1");
+      $location.path("/chat1");
     };
 
     $scope.user = $cookies.user;
 
     userSvc.getMsgs().success(function(msgs) {
 
+
       $scope.msgs = msgs;
 
     });
-
-
     // $scope.createUser = function (user) {
     //  var kill = false;
     //  for (var i = 0; i< $scope.users.length; i++) {
@@ -60,11 +59,6 @@ angular.module("userModule")
       console.log(msgs)
       $scope.msgs = msgs.data.reverse();
     });
-
-    // userSvc.singleMsg($routeParams.id).then(function (response) {
-    //  $scope.singleMsg = response.data;
-    // });
-
 
     $scope.addMsg = function (msg) {
       userSvc.addMsg({

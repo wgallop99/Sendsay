@@ -9,6 +9,7 @@ angular.module("userModule")
           return $http.get(users);
         };
 
+
         var addUser = function(name) {
             $cookies.user = name;
         };
@@ -16,14 +17,17 @@ angular.module("userModule")
         var singleUser = function(id) {
            return $http.get(users + "/" + id);
         };
+        // var singleUser = function(id) {
+        //    return $http.get(users + "/" + id);
+        // };
 
 
-        var createUser = function(user) {
-          return $http.post(users, user).then(function (response) {
-                $rootScope.$broadcast("user:added");
-                $log.info("user:added");
-            })
-        };
+        // var createUser = function(user) {
+        //   return $http.post(users, user).then(function (response) {
+        //         $rootScope.$broadcast("user:added");
+        //         $log.info("user:added");
+        //     })
+        // };
 
 
         var deleteUser = function(user) {
@@ -62,13 +66,13 @@ angular.module("userModule")
         return {
           addUser:addUser,
           getUsers: getUsers,
-        //  singleUser: singleUser,
-        //  addUser: createUser,
+        //   singleUser: singleUser,
+        //   addUser: createUser,
           deleteUser: deleteUser,
-        //  editUser: editUser,
+        //   editUser: editUser,
           ////
           getMsgs: getMsgs,
-        //  singleMsg: singleMsg,
+        //   singleMsg: singleMsg,
           addMsg: createMsg,
         };
     });
