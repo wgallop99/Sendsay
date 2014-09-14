@@ -1,5 +1,5 @@
 angular.module("userModule")
-  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, userSvc) {
+  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, $interval, userSvc) {
 
 // main CRUD functions
     userSvc.getUsers().then(function (users) {
