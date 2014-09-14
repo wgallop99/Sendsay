@@ -1,57 +1,70 @@
 angular.module("userModule")
-  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, userSvc) {
+  .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, $interval, userSvc) {
 
 // main CRUD functions
     userSvc.getUsers().then(function (users) {
       $scope.users = users.data;
     });
 
-    $scope.addUser = function (user) {
-      var kill = false;
-      for (var i = 0; i< $scope.users.length; i++) {
-        if($scope.users[i].title === user.title) {
-          $rootScope.$broadcast("user:match");
-          console.log("There is already a user with that name.");
-          return kill = true;
-        }
-      } if (kill === false) {
-        userSvc.addUser({
-        title: user.title,
-        image: user.image,
-      }).then(function () {
-          $location.path("/chat1");
-      })
-    }
+    // userSvc.singleUser($routeParams.id).then(function (response) {
+    //  $scope.singleUser = response.data;
+    // });
+
+    $scope.addUser = function(name) {
+
+      userSvc.addUser(name);
+
+      $location.path("/chat1");
     };
 
-    //////adds cookie username
-    $scope.addUsername = function(name) {
-      userSvc.addUsername(name);
+    $scope.user = $cookies.user;
 
-    };
-
-    $scope.username = $cookies.username;
     userSvc.getMsgs().success(function(msgs) {
 
-    $scope.msgs = msgs;
+
+      $scope.msgs = msgs;
 
     });
+    // $scope.createUser = function (user) {
+    //  var kill = false;
+    //  for (var i = 0; i< $scope.users.length; i++) {
+    //    if($scope.users[i].title === user.title) {
+    //      $rootScope.$broadcast("user:match");
+    //      console.log("you're already in our system");
+    //      return kill = true;
+    //    }
+    //  } if (kill === false) {
+    //    userSvc.createUser({
+    //    user: $scope.user,
+    //    image: user.image,
+    //  }).then(function () {
+    //      $location.path("/chat1");
+    //  })
+    // }
+    // };
 
     $scope.deleteUser = function (user) {
       userSvc.deleteUser(user);
     };
+    //
+    // $scope.editUser = function (user) {
+    //  userSvc.editUser(user).then(function () {
+    //    $location.path("/");
+    //  });
+    // };
 
     ///////////////
 
-    userSvc.getMsgs().then(function (msgs) {
+    $interval(userSvc.getMsgs().then(function (msgs) {
       console.log(msgs)
       $scope.msgs = msgs.data.reverse();
-    });
+  }), 1000
+);
 
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
       posteddate: Date.now(),
-      username: $scope.username,
+      user: $scope.user,
       content: msg.content,
 
       }).then(function () {
@@ -77,10 +90,10 @@ angular.module("userModule")
       });
   });
 
-      $rootScope.$on("message:added", function () {
-        userSvc.getMsgs().then(function (msgs) {
-          $scope.msgs = msgs.data.reverse();
-
+    $rootScope.$on("message:added", function () {
+      userSvc.getMsgs().then(function (msgs) {
+        $scope.msgs = msgs.data.reverse();
+        // $route.reload();
     });
   });
 });
