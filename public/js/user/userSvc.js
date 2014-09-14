@@ -29,6 +29,7 @@ angular.module("userModule")
             })
         };
 
+
         ///////////////chatroom1
 
         var getMsgs = function(){

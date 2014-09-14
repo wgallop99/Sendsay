@@ -60,9 +60,9 @@ angular.module("userModule")
       $scope.msgs = msgs.data.reverse();
     });
 
-    $interval(function (msgs) {
+    $scope.$interval(function (msgs) {
         userSvc.getMsgs();
-    },500);
+    },1000);
 
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
@@ -71,7 +71,6 @@ angular.module("userModule")
       content: msg.content,
 
       }).then(function () {
-        $location.path("/chat1");
         document.getElementById("chatInput").value = "";
       });
 
