@@ -69,7 +69,7 @@ angular.module("userModule")
 
     $rootScope.$on("user:deleted", function () {
       userSvc.getUsers().then(function (users) {
-        $scope.users = users.data.reverse();
+        $scope.users = users.data;
       });
   });
 
@@ -90,7 +90,7 @@ angular.module("userModule")
  $scope.getMsgs = $interval(function()
     {
       userSvc.getMsgs().success(function(msgs){
-      $scope.msgs = msgs.data.reverse();
+      $scope.msgs = msgs.reverse();
       });
     }, 500);
 
