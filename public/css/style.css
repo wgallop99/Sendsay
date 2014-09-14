@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  padding-top: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url("../images/brickwall.png"); }
 
@@ -7,6 +8,12 @@ h1 {
   font-family: 'Permanent Marker', cursive;
   text-align: center;
   font-size: 6em;
+  color: rgba(155, 0, 0, 0.7); }
+
+h4 {
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+  font-size: 2em;
   color: rgba(155, 0, 0, 0.7); }
 
 .jumbotron {
@@ -19,7 +26,7 @@ a {
 
 .userList {
   width: 200px;
-  height: 500px;
+  height: 450px;
   border: 1px solid black;
   display: inline-block;
   position: absolute;
@@ -29,7 +36,7 @@ a {
   width: 607px;
   display: inline-block;
   position: fixed;
-  bottom: 25px;
+  bottom: 30px;
   left: 150px; }
 
 .authorInput {
@@ -44,7 +51,7 @@ a {
 
 .chatContainer {
   width: 607px;
-  height: 500px;
+  height: 450px;
   padding-bottom: 15px;
   border: 1px solid black;
   display: inline-block;

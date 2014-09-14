@@ -7,55 +7,39 @@ angular.module("userModule")
       $scope.users = users.data;
     });
 
-    // userSvc.singleUser($routeParams.id).then(function (response) {
-    //   $scope.singleUser = response.data;
-    // });
+    $scope.addUser = function (user) {
+      var kill = false;
+      for (var i = 0; i< $scope.users.length; i++) {
+        if($scope.users[i].title === user.title) {
+          $rootScope.$broadcast("user:match");
+          console.log("There is already a user with that name.");
+          return kill = true;
+        }
+      } if (kill === false) {
+        userSvc.addUser({
+        title: user.title,
+        image: user.image,
+      }).then(function () {
+          $location.path("/chat1");
+      })
+    }
+    };
 
-    $scope.addUser = function(name) {
-
-      userSvc.addUser(name);
-
-      $location.path("/chat1");
+    //////adds cookie username
+    $scope.addUsername = function(name) {
+      userSvc.addUsername(name);
 
     };
 
-    $scope.user = $cookies.user;
-
+    $scope.username = $cookies.username;
     userSvc.getMsgs().success(function(msgs) {
-
     $scope.msgs = msgs;
 
     });
 
-
-    // $scope.addUser = function (user) {
-    //   var kill = false;
-    //   for (var i = 0; i< $scope.users.length; i++) {
-    //     if($scope.users[i].title === user.title) {
-    //       $rootScope.$broadcast("user:match");
-    //       console.log("you're already in our system");
-    //       return kill = true;
-    //     }
-    //   } if (kill === false) {
-    //     userSvc.addUser({
-    //     user: $scope.user,
-    //     image: user.image,
-    //   }).then(function () {
-    //       $location.path("/chat1");
-    //   })
-    // }
-    // };
-
     $scope.deleteUser = function (user) {
       userSvc.deleteUser(user);
     };
-    //
-    // $scope.editUser = function (user) {
-    //   userSvc.editUser(user).then(function () {
-    //     $location.path("/");
-    //   });
-    // };
-
     ///////////////
 
     userSvc.getMsgs().then(function (msgs) {
@@ -63,15 +47,10 @@ angular.module("userModule")
       $scope.msgs = msgs.data.reverse();
     });
 
-    // userSvc.singleMsg($routeParams.id).then(function (response) {
-    //   $scope.singleMsg = response.data;
-    // });
-
-
     $scope.addMsg = function (msg) {
       userSvc.addMsg({
       posteddate: Date.now(),
-      user: $scope.user,
+      username: $scope.username,
       content: msg.content,
 
       }).then(function () {
