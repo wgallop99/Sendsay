@@ -38,6 +38,10 @@ a {
   display: inline-block;
   position: absolute;
   overflow: auto; }
+  .userList h3 {
+    text-align: center;
+    border-bottom: 1px black solid;
+    font-size: 1.4em; }
 
 #chatInput {
   width: 607px;
@@ -82,3 +86,15 @@ a {
   font-size: 1.5em; }
   .water span {
     color: rgba(155, 0, 0, 0.7); }
+
+.button {
+  background-color: rgba(0, 0, 0, 0.7);
+  font-family: 'Permanent Marker', cursive;
+  border-radius: 7px;
+  transition: all 1s ease;
+  font-size: 1.2em;
+  color: white; }
+
+.button:hover {
+  color: rgba(155, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2); }

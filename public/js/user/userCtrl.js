@@ -22,7 +22,7 @@ $scope.getMsgs = $interval(function()
        userSvc.addUser({
        username: user,
      }).then(function () {
-         console.log("CREATED A USER");
+         console.log("please be created.");
      })
     };
 
