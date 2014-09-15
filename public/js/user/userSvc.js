@@ -43,8 +43,8 @@ angular.module("userModule")
 
 
         return {
-          addUsername:addUsername,
           getUsers: getUsers,
+          addUsername:addUsername,
           addUser: createUser,
           deleteUser: deleteUser,
           ////

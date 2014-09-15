@@ -6,8 +6,8 @@ angular.module("userModule")
       $scope.users = users.data;
     });
 
-      $scope.addUsername = function(name) {
-      userSvc.addUsername(name);
+      $scope.addUsername = function(user) {
+      userSvc.addUsername(user);
       if (name === undefined) {
           console.log("Please enter a name");
       } else {
