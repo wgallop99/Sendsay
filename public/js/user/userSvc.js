@@ -9,7 +9,7 @@ angular.module("userModule")
         };
 
         var addUser = function(user) {
-          return $http.post(users, user).then(function (response) {
+          return $http.post(users, user).then(function(response) {
                 $rootScope.$broadcast("user:added");
                 $log.info("user:added");
             })
@@ -43,8 +43,8 @@ angular.module("userModule")
 
 
         return {
-          addUsername:addUsername,
           getUsers: getUsers,
+          addUsername:addUsername,
           addUser: addUser,
           deleteUser: deleteUser,
           ////

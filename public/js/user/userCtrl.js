@@ -2,7 +2,6 @@ angular.module("userModule")
   .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, $interval, userSvc) {
 
 // main CRUD functions
-
 $scope.getMsgs = $interval(function()
      {
            userSvc.getMsgs().success(function(msgs){
