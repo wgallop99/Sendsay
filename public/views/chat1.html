@@ -5,8 +5,7 @@
 
   <form class="chatContainer">
     <div class="chatBox" data-ng-repeat="msg in msgs track by $index">
-      <p>
-        <span class="author">{{msg.user}}:</span> {{msg.content}}<span class="dateposted">{{msg.posteddate | date:'short'}}</span></p>
+      <p><span class="author">{{msg.username}}:</span> {{msg.content}}<span class="dateposted">{{msg.posteddate | date:'short'}}</span></p>
     </div>
         <input id="chatInput" type="text" placeholder="Type Here" ng-model="msg.content">
         <button type="submit" data-ng-click="addMsg(msg)" style="display:none;"></button>
@@ -16,7 +15,6 @@
 
     <section data-ng-repeat="user in users">
       <p>{{user.username}}</p>
-      <img ng-src="{{user.image}}" width="50">
     </section>
   </aside>
 </div>

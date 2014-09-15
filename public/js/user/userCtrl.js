@@ -1,26 +1,23 @@
-
-		angular.module("userModule")
+angular.module("userModule")
   .controller("userCtrl", function ($rootScope, $route, $scope, $timeout, $location, $cookies, $routeParams, $interval, userSvc) {
 
-		// main CRUD functions
+// main CRUD functions
     userSvc.getUsers().then(function (users) {
       $scope.users = users.data;
     });
 
-    // userSvc.singleUser($routeParams.id).then(function (response) {
-    //  $scope.singleUser = response.data;
-    // });
-
       $scope.addUsername = function(name) {
       userSvc.addUsername(name);
-      $location.path("/chat1")
+      if (name === undefined) {
+          console.log("Please enter a name");
+      } else {
+          $location.path("/chat1");
+      }
+
     };
 
     $scope.username = $cookies.username;
-    userSvc.getMsgs().success(function(msgs) {
-        $scope.msgs = msgs;
 
-    });
     // $scope.createUser = function (user) {
     //  var kill = false;
     //  for (var i = 0; i< $scope.users.length; i++) {
@@ -43,8 +40,7 @@
       userSvc.deleteUser(user);
     };
 
-    ///////////////
-
+    ///////////////M
     userSvc.getMsgs().then(function (msgs) {
       console.log(msgs)
       $scope.msgs = msgs.data.reverse();
@@ -55,12 +51,18 @@
       posteddate: Date.now(),
       content: msg.content,
       username:$scope.username,
-
       }).then(function () {
         document.getElementById("chatInput").value = "";
       });
 
     };
+
+    $scope.getMsgs = $interval(function()
+     {
+       userSvc.getMsgs().success(function(msgs){
+       $scope.msgs = msgs.reverse();
+       });
+     }, 500);
 
 
     /////////////////////////////////////listeners
@@ -85,12 +87,4 @@
   });
 
 
-
- $scope.getMsgs = $interval(function()
-    {
-      userSvc.getMsgs().success(function(msgs){
-      $scope.msgs = msgs.reverse();
-      });
-    }, 500);
-
-		});
+});

@@ -1,8 +1,7 @@
-
 angular.module("userModule")
     .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
 
-        var users = '/api/collections/demotiy';
+        var users = '/api/collections/users';
         var chatroom1 = '/api/collections/chatroom';
 
         var getUsers = function(){
@@ -18,8 +17,8 @@ angular.module("userModule")
 
         ///////cookie username
         var addUsername = function(name) {
-$cookies.username = name;
-};
+          $cookies.username = name;
+        };
 
         var deleteUser = function(user) {
           return $http.delete(users + "/" + user._id, user).then(function (response) {
@@ -31,7 +30,6 @@ $cookies.username = name;
 
 
         ///////////////chatroom1
-
         var getMsgs = function(){
           return $http.get(chatroom1);
         };
