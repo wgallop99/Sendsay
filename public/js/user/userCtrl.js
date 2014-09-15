@@ -17,34 +17,30 @@ angular.module("userModule")
     };
 
     $scope.username = $cookies.username;
-    userSvc.getMsgs().success(function(msgs) {
-        $scope.msgs = msgs;
 
-    });
-    // $scope.createUser = function (user) {
-    //  var kill = false;
-    //  for (var i = 0; i< $scope.users.length; i++) {
-    //    if($scope.users[i].title === user.title) {
-    //      $rootScope.$broadcast("user:match");
-    //      console.log("you're already in our system");
-    //      return kill = true;
-    //    }
-    //  } if (kill === false) {
-    //    userSvc.createUser({
-    //    user: $scope.user,
-    //    image: user.image,
-    //  }).then(function () {
-    //      $location.path("/chat1");
-    //  })
-    // }
-    // };
+    $scope.createUser = function (user) {
+     var kill = false;
+     for (var i = 0; i< $scope.users.length; i++) {
+       if($scope.users[i].title === user.title) {
+         $rootScope.$broadcast("user:match");
+         console.log("you're already in our system");
+         return kill = true;
+       }
+     } if (kill === false) {
+       userSvc.createUser({
+       user: $scope.user,
+       image: user.image,
+     }).then(function () {
+         $location.path("/chat1");
+     })
+    }
+    };
 
     $scope.deleteUser = function (user) {
       userSvc.deleteUser(user);
     };
 
-    ///////////////
-
+    ///////////////M
     userSvc.getMsgs().then(function (msgs) {
       console.log(msgs)
       $scope.msgs = msgs.data.reverse();
@@ -55,12 +51,18 @@ angular.module("userModule")
       posteddate: Date.now(),
       content: msg.content,
       username:$scope.username,
-
       }).then(function () {
         document.getElementById("chatInput").value = "";
       });
 
     };
+
+    $scope.getMsgs = $interval(function()
+     {
+       userSvc.getMsgs().success(function(msgs){
+       $scope.msgs = msgs.reverse();
+       });
+     }, 500);
 
 
     /////////////////////////////////////listeners
@@ -84,13 +86,5 @@ angular.module("userModule")
     });
   });
 
-
-
- $scope.getMsgs = $interval(function()
-    {
-      userSvc.getMsgs().success(function(msgs){
-      $scope.msgs = msgs.reverse();
-      });
-    }, 500);
 
 });

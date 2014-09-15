@@ -2,7 +2,7 @@
 angular.module("userModule")
     .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
 
-        var users = '/api/collections/demotiy';
+        var users = '/api/collections/users';
         var chatroom1 = '/api/collections/chatroom';
 
         var getUsers = function(){
@@ -31,7 +31,6 @@ angular.module("userModule")
 
 
         ///////////////chatroom1
-
         var getMsgs = function(){
           return $http.get(chatroom1);
         };
