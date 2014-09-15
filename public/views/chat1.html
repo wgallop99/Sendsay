@@ -1,13 +1,13 @@
 <h4> Sendsay </h4>
 <div class="container">
 
-    <p style="text-align:center;"><span>Ask Sendsay anything, young <b>{{username}}.</b></span></p>
 
+  <p style="text-align:center;"><span>Ask Sendsay anything, young <b>{{username}}.</b></span></p>
   <form class="chatContainer">
     <div class="chatBox" data-ng-repeat="msg in msgs track by $index">
       <p><span class="author">{{msg.username}}:</span> {{msg.content}}<span class="dateposted">{{msg.posteddate | date:'short'}}</span></p>
     </div>
-        <input id="chatInput" type="text" placeholder="Type Here" ng-model="msg.content">
+        <input id="chatInput" type="text" placeholder="Become the cup..." ng-model="msg.content">
         <button type="submit" data-ng-click="addMsg(msg)" style="display:none;"></button>
   </form>
 
@@ -18,3 +18,5 @@
     </section>
   </aside>
 </div>
+
+    <p class="water" ng-model="username">Be like water, young <span>{{username}}.</span></p>
