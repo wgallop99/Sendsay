@@ -1,14 +1,14 @@
 body {
-  padding: 0px;
-  padding-top: 0px;
-  padding-right: 0px;
-  background-image:url("../images/brucelee2.png");
-  background-size:cover;
-  background-repeat:no-repeat;
-  h3 {
-      font-family: 'Permanent Marker', cursive;
-      color:rgba(0,0,0,.7);
-  }
+      padding: 0px;
+      padding-top: 0px;
+      padding-right: 0px;
+      background-image:url("../images/brucelee2.png");
+      background-size:cover;
+      background-repeat:no-repeat;
+      h3 {
+          font-family: 'Permanent Marker', cursive;
+          color:rgba(0,0,0,.7);
+      }
 
 }
 
@@ -41,27 +41,32 @@ a {
 }
 
 .userList {
-  width: 125px;
-  height: 450px;
-  margin-left:5px;
-  font-weight:bold;
-  background-color:rgba(0,0,0,.1);
-  display:inline-block;
-  position:absolute;
-  overflow:auto;
+      width: 125px;
+      height: 450px;
+      margin-left:5px;
+      font-weight:bold;
+      background-color:rgba(0,0,0,.1);
+      display:inline-block;
+      position:absolute;
+      overflow:auto;
+      h3 {
+          text-align:center;
+          border-bottom:1px black solid;
+          font-size:1.4em;
+      }
 }
 #chatInput{
-  width: 607px;
-display: inline-block;
-position: fixed;
-bottom: 80px;
-left: 50px;
+      width: 607px;
+      display: inline-block;
+      position: fixed;
+      bottom: 80px;
+      left: 50px;
 }
 .authorInput{
-  width: 100px;
-position: fixed;
-bottom: 25px;
-left: 0px;
+      width: 100px;
+      position: fixed;
+      bottom: 25px;
+      left: 0px;
 }
 
 .dateposted {
@@ -70,14 +75,14 @@ left: 0px;
 }
 
 .chatContainer {
-  width: 607px;
-  height: 450px;
-  padding-bottom:15px;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  overflow:auto;
-  background-color:rgba(0,0,0,.1);
+      width: 607px;
+      height: 450px;
+      padding-bottom:15px;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      overflow:auto;
+      background-color:rgba(0,0,0,.1);
   .chatbox {
       margin-bottom:25px;
       padding:5px;
@@ -85,8 +90,8 @@ left: 0px;
 }
 
 .container {
- display:inline-block;
- margin:10px;
+     display:inline-block;
+     margin:10px;
 
 }
 
@@ -101,4 +106,18 @@ left: 0px;
     span {
         color:rgba(155,0,0,.7);
     }
+}
+
+.button {
+    background-color:rgba(0,0,0, .7);
+    font-family: 'Permanent Marker', cursive;
+    border-radius:7px;
+    transition:all 1s ease;
+    font-size:1.2em;
+    color:white;
+}
+
+.button:hover {
+    color:rgba(155,0,0,.7);
+    background-color:rgba(0,0,0, .2);
 }
