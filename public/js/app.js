@@ -4,7 +4,7 @@ angular.module('userModule',
   [
     'ngCookies',
     'ngSanitize',
-    'ngRoute',
+    'ngRoute'
   ])
   .config(function ($routeProvider) {
     $routeProvider
