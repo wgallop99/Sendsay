@@ -1,13 +1,17 @@
 body {
-  padding: 50px;
+  padding: 0px;
   padding-top: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("../images/brickwall.png"); }
+  padding-right: 0px;
+  background-image: url("../images/brucelee.jpg");
+  background-size: cover; }
+  body h3 {
+    font-family: 'Permanent Marker', cursive;
+    color: rgba(0, 0, 0, 0.7); }
 
 h1 {
   font-family: 'Permanent Marker', cursive;
   text-align: center;
-  font-size: 6em;
+  font-size: 7em;
   color: rgba(155, 0, 0, 0.7); }
 
 h4 {
@@ -25,9 +29,11 @@ a {
   color: #00B7FF; }
 
 .userList {
-  width: 200px;
+  width: 125px;
   height: 450px;
-  border: 1px solid black;
+  margin-left: 5px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.1);
   display: inline-block;
   position: absolute;
   overflow: auto; }
@@ -36,8 +42,8 @@ a {
   width: 607px;
   display: inline-block;
   position: fixed;
-  bottom: 30px;
-  left: 150px; }
+  bottom: 38px;
+  left: 50px; }
 
 .authorInput {
   width: 100px;
@@ -53,13 +59,14 @@ a {
   width: 607px;
   height: 450px;
   padding-bottom: 15px;
-  border: 1px solid black;
   display: inline-block;
   vertical-align: top;
   position: relative;
-  overflow: auto; }
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.1); }
   .chatContainer .chatbox {
-    margin-bottom: 25px; }
+    margin-bottom: 25px;
+    padding: 5px; }
 
 .container {
   display: inline-block;

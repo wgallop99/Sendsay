@@ -6,13 +6,14 @@ angular.module("userModule")
       $scope.users = users.data;
     });
 
-    // userSvc.singleUser($routeParams.id).then(function (response) {
-    //  $scope.singleUser = response.data;
-    // });
-
       $scope.addUsername = function(name) {
       userSvc.addUsername(name);
-      $location.path("/chat1")
+      if (name === undefined) {
+          console.log("Please enter a name");
+      } else {
+          $location.path("/chat1");
+      }
+
     };
 
     $scope.username = $cookies.username;
