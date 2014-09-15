@@ -1,8 +1,6 @@
 <h4> Sendsay </h4>
 <div class="container">
 
-
-  <p style="text-align:center;"><span>Ask Sendsay anything, young <b>{{username}}.</b></span></p>
   <form class="chatContainer">
     <div class="chatBox" data-ng-repeat="msg in msgs track by $index">
       <p><span class="author">{{msg.username}}:</span> {{msg.content}}<span class="dateposted">{{msg.posteddate | date:'short'}}</span></p>

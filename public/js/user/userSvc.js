@@ -8,7 +8,7 @@ angular.module("userModule")
           return $http.get(users);
         };
 
-        var createUser = function(user) {
+        var addUser = function(user) {
           return $http.post(users, user).then(function (response) {
                 $rootScope.$broadcast("user:added");
                 $log.info("user:added");

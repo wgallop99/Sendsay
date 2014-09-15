@@ -16,10 +16,6 @@ angular.module('userModule',
         templateUrl: 'views/chat1.html',
         controller: 'userCtrl'
       })
-      .when('/chat2', {
-        templateUrl: 'views/chat2.html',
-        controller: 'userCtrl'
-      })
       .when('/admin', {
         templateUrl: 'views/admin.html',
         controller: 'userCtrl'
