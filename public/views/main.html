@@ -4,17 +4,16 @@
 <h1> Sendsay </h1>
 <div class="jumbotron">
 
-    <form ng-submit="createUser(user)">
+    <form ng-submit="addUser(user); addUsername(user)">
 
         <h3>What do they call you, young leaf?</h3>
-        <input type="text" placeholder="Name" ng-model="username" required>
-        <input type="text" placeholder="Enter Name Again" ng-model="user.title" required>
+        <input type="text" placeholder="Name" ng-model="user" required>
 
-        <h3>What do you look like?</h3>
-        <input type="url" placeholder="Enter image URL" ng-model="user.image">
-        <p><img src="{{user.image}}" width="200" height="200"></p>
+<!--         <h3 class="text-muted">What do you look like?</h3>
+<input type="url" placeholder="Enter image URL" ng-model="user.image">
+<p><img src="{{user.image}}" width="200" height="200"></p> -->
 
-        <p><a class="btn btn-lg btn-success" data-ng-click="addUser(user); addUsername(username)">Be one with your body.</a></p></p>
+        <button class="btn" type="submit">Be one with your body</button>
 
     </form>
 </div>

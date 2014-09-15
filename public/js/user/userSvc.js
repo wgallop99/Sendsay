@@ -1,4 +1,3 @@
-
 angular.module("userModule")
     .factory("userSvc", function ($rootScope, $log, $http, $cookies) {
 
@@ -9,7 +8,7 @@ angular.module("userModule")
           return $http.get(users);
         };
 
-        var createUser = function(user) {
+        var addUser = function(user) {
           return $http.post(users, user).then(function (response) {
                 $rootScope.$broadcast("user:added");
                 $log.info("user:added");
@@ -18,8 +17,8 @@ angular.module("userModule")
 
         ///////cookie username
         var addUsername = function(name) {
-			$cookies.username = name;
-		};
+          $cookies.username = name;
+        };
 
         var deleteUser = function(user) {
           return $http.delete(users + "/" + user._id, user).then(function (response) {
@@ -46,7 +45,7 @@ angular.module("userModule")
         return {
           addUsername:addUsername,
           getUsers: getUsers,
-          addUser: createUser,
+          addUser: addUser,
           deleteUser: deleteUser,
           ////
           getMsgs: getMsgs,
