@@ -2,12 +2,27 @@ body {
   padding: 0px;
   padding-top: 0px;
   padding-right: 0px;
-  background-image: url("../images/brucelee2.png");
-  background-size: cover;
-  background-repeat: no-repeat; }
+  background-image: url("../images/brickwall.png");
+  /*       background-size:cover;
+background-repeat:no-repeat; */ }
   body h3 {
     font-family: 'Permanent Marker', cursive;
     color: rgba(0, 0, 0, 0.7); }
+
+#BRUCE {
+  background-image: url("../images/bruce1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 32%;
+  height: 100%;
+  transition: all 0.5s ease-in-out; }
+
+#BRUCE:hover {
+  background-image: url("../images/bruce2.png");
+  width: 50%; }
 
 .Odd {
   background-color: rgba(0, 0, 0, 0.2); }
@@ -33,7 +48,7 @@ a {
   color: #00B7FF; }
 
 .userList {
-  width: 125px;
+  width: 150px;
   height: 450px;
   margin-left: 5px;
   font-weight: bold;
@@ -50,7 +65,7 @@ a {
   width: 607px;
   display: inline-block;
   position: fixed;
-  bottom: 75px;
+  bottom: 65px;
   left: 50px; }
 
 .authorInput {
@@ -101,3 +116,7 @@ a {
 .button:hover {
   color: rgba(155, 0, 0, 0.7);
   background-color: rgba(0, 0, 0, 0.2); }
+
+.remove {
+  font-size: 0.8em;
+  color: black; }
