@@ -3,7 +3,8 @@ body {
   padding-top: 0px;
   padding-right: 0px;
   background-image: url("../images/brucelee.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background-repeat: no-repeat; }
   body h3 {
     font-family: 'Permanent Marker', cursive;
     color: rgba(0, 0, 0, 0.7); }
@@ -42,7 +43,7 @@ a {
   width: 607px;
   display: inline-block;
   position: fixed;
-  bottom: 38px;
+  bottom: 80px;
   left: 50px; }
 
 .authorInput {
@@ -74,3 +75,10 @@ a {
 
 .author {
   font-weight: bold; }
+
+.water {
+  margin-left: 30px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.5em; }
+  .water span {
+    color: rgba(155, 0, 0, 0.7); }
